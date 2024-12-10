@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
-public class Main {
+public class Coches {
     public static void main(String[] args) {
 
    ArrayList<String> marcas = new ArrayList<String>();
@@ -19,8 +19,6 @@ public class Main {
 
         Collections.sort(marcas);
         System.out.println(marcas);
-
-
 
     }
 }
