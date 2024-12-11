@@ -3,32 +3,32 @@ import java.util.*;
 
 public class Anagrama {
     public static void main(String[] args) throws IOException {
-        String menos = anagrams(15);
+        String menos = anagramas(15);
         System.out.println(menos);
     }
 
-    public static String anagrams(int minGroupSize) throws IOException {
+    public static String anagramas(int minGroupSize) throws IOException {
         StringBuffer buff = new StringBuffer();
-        Map<String, List<String>> m = new HashMap<>();
+        Map<String, List<String>> lista = new HashMap<>();
         BufferedReader lector = null;
-        try {
+            try {
             lector = new BufferedReader(new FileReader("/home/alemunmar2/Escritorio/Arraylist/ArrayListt/src/ficheros/spanish-dict.txt"));
             String word;
             while ((word = lector.readLine()) != null) {
                 String alpha = alphabetize(word);
-                List<String> l = m.get(alpha);
+                List<String> l = lista.get(alpha);
                 if (l == null)
-                    m.put(alpha, l = new ArrayList<>());
+                    lista.put(alpha, l = new ArrayList<>());
                 l.add(word);
             }
-        } catch (IOException fi) {
+        }   catch (IOException fi) {
             System.err.println(fi);
             System.exit(1);
         } finally {
             lector.close();
         }
 
-        for (List<String> l : m.values())
+        for (List<String> l : lista.values())
             if (l.size() >= minGroupSize)
                 buff.append(l.size() + ": " + l + "\n");
 
@@ -39,5 +39,6 @@ public class Anagrama {
         char[] a = s.toCharArray();
         Arrays.sort(a);
         return new String(a);
+
     }
 }
